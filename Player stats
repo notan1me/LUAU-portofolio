@@ -1,0 +1,19 @@
+local newPart = Instance.new("Part")--this creates a whole new instance while the game is running and part is the one it's going to make
+newPart.Name = "NewInstancePart"--this sets the name but we can change any propertie of the part we want to
+newPart.Parent = game.Workspace--and this sets the parent of the part
+--create leaderstats for every signle player that joins the game:
+game.Players.PlayerAdded:Connect(function(player)--checks when the player joins the game
+	local leaderstats = Instance.new("Folder")--this makes the leaderstats folder when a player joins the game
+	leaderstats.Name = "leaderstats"--this names the folder
+	leaderstats.Parent = player--and this will add the folder in the player
+
+	local coins = Instance.new("IntValue")--this creates the value on leaderstats
+	coins.Name = "Coins"--this names it
+	coins.Value = 0--this gives the leaderstat an amount
+	coins.Parent = leaderstats--and this puts the IntValue inside the leaderstats folder
+
+	while true do--this add a cooldown that you get +1 value
+		task.wait(0.1)--by each second is put in here
+		coins.Value = coins.Value + 100000--and this says how much we want to add
+	end
+end)
