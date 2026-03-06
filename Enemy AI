@@ -1,0 +1,54 @@
+--simple enemy ai state machine
+
+local enemy = {}
+
+enemy.health = 100
+enemy.state = "Idle"
+enemy.targetDistance = 50
+
+local function idleState()
+	print("Enemy is idle")
+	
+	if enemy.targetDistance < 30 then
+		enemy.state = "Chase"
+	end
+end
+
+local function chaseState()
+	print("Enemy chasing player")
+	
+	enemy.targetDistance -= math.random(1,5)
+	
+	if enemy.targetDistance <= 5 then
+		enemy.state = "Attack"
+	end
+	
+	if enemy.targetDistance > 40 then
+		enemy.state = "Idle"
+	end
+end
+
+local function attackState()
+	print("Enemy attacking")
+	
+	local damage = math.random(5,15)
+	print("Enemy dealt",damage,"damage")
+	
+	if enemy.targetDistance > 10 then
+		enemy.state = "Chase"
+	end
+end
+
+local function updateAI()
+	if enemy.state == "Idle" then
+		idleState()
+	elseif enemy.state == "Chase" then
+		chaseState()
+	elseif enemy.state == "Attack" then
+		attackState()
+	end
+end
+
+for tick = 1,30 do
+	updateAI()
+end
