@@ -1,0 +1,8 @@
+local gui = game.StarterGui.TheNumberIsFiveGui--this is the variable for our GUI
+local randomNumber = math.random(1, 6)--this creates a math.random variable that chooses between 1 and 6
+
+print(randomNumber)--this prints out what number it chose
+
+if randomNumber == 5 then
+	gui.Enabled = true--and this enables the gui if the number is 5
+end
