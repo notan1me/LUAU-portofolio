@@ -1,0 +1,31 @@
+--the player added event:
+game.Players.PlayerAdded:Connect(function(playername)
+	print(playername)
+end
+--other way of writing an event:
+local function playerAdded(player)
+	print(player)
+end
+
+game.Players.PlayerAdded:Connect(playerAdded)
+--the touched event:
+local touchPart = game.Workspace.TouchPart--the variable
+
+touchPart.Touched:Connect(function(otherPart)--creation of the event
+	print(otherPart.Name)--prints what part of the player touched the TouchPart
+end)
+--also we can add a debounce to add a cooldown to touching the part:
+local partTouch = game.Workspace.TouchPart
+
+local partIsTouched = false--variable to be able to make a debounce
+
+partTouch.Touched:Connect(function(otherPart)
+	if partIsTouched == false then--an if statement
+		partIsTouched = true
+		print(otherPart)
+		
+		task.wait(1.5)--this
+		partIsTouched = false--and this add the cooldown
+	end
+	
+end)
