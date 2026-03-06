@@ -1,0 +1,84 @@
+--quest system with objectives and rewards
+
+local quests = {}
+
+local questDatabase = {
+	["KillSlimes"] = {
+		description = "Kill 5 slimes",
+		goal = 5,
+		reward = 100
+	},
+	
+	["CollectApples"] = {
+		description = "Collect 10 apples",
+		goal = 10,
+		reward = 50
+	}
+}
+
+local playerData = {
+	gold = 0,
+	activeQuests = {},
+	completedQuests = {}
+}
+
+local function startQuest(questName)
+	if playerData.completedQuests[questName] then
+		print("Quest already completed")
+		return
+	end
+	
+	if playerData.activeQuests[questName] then
+		print("Quest already active")
+		return
+	end
+	
+	local questInfo = questDatabase[questName]
+	
+	playerData.activeQuests[questName] = {
+		progress = 0,
+		goal = questInfo.goal
+	}
+	
+	print("Quest started:",questInfo.description)
+end
+
+local function updateQuest(questName,amount)
+	local quest = playerData.activeQuests[questName]
+	
+	if not quest then
+		return
+	end
+	
+	quest.progress += amount
+	
+	print("Quest progress:",quest.progress.."/"..quest.goal)
+	
+	if quest.progress >= quest.goal then
+		completeQuest(questName)
+	end
+end
+
+function completeQuest(questName)
+	local quest = playerData.activeQuests[questName]
+	
+	if not quest then
+		return
+	end
+	
+	local reward = questDatabase[questName].reward
+	
+	playerData.gold += reward
+	
+	playerData.activeQuests[questName] = nil
+	playerData.completedQuests[questName] = true
+	
+	print("Quest completed! Reward:",reward)
+	print("Total Gold:",playerData.gold)
+end
+
+startQuest("KillSlimes")
+
+for i = 1,5 do
+	updateQuest("KillSlimes",1)
+end
