@@ -1,0 +1,14 @@
+local tweenService = game:GetService("TweenService")
+local part = script.Parent
+
+local tweenInfo = TweenInfo.new(5)
+
+local goal = {
+	Position = Vector3.new(150, 3, 17.096),
+	Size = Vector3.new(10, 10, 10)
+}
+
+local tween = tweenService:Create(part, tweenInfo, goal)
+
+task.wait(4)
+tween:Play()
