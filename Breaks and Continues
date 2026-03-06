@@ -1,0 +1,19 @@
+for i = 1, 100000, 1 do
+	print("This statement is printed!")
+	
+	if i == 200 then--when 1+1 reaches 200 it will stop the loop and not actually go to 100k
+		break
+	end
+end
+--and now the continue:
+for i = 1, 100000, 1 do
+	if i == 10 then
+		print("i is equal to 10 so skip this iteration")--when the i reaches 10 it will print this
+		continue--and this is going to continue the for loop
+	end
+	
+	if i == 200 then--this is also required because such big numbers would crash your game
+		break
+	end	
+	print("This statement is printed!")
+end
