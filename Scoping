@@ -1,0 +1,30 @@
+local myAmazingBaseplate = game.Workspace.Baseplate--basic variable
+local myBigNumber = 500000--basic variable																												
+--but if we move "print(trueStatement)" here it will work because its with more variables and its like creating a whole new variable
+local function greatFunction()--basic function
+	local trueStatement = true--basic variable
+	print(trueStatement)--if i move this somewhere else it will not work because its not in the function that the variable was created in,this is scoping
+end
+
+greatFunction()--and this will call the function
+--here is another example:
+local myAmazingBaseplate = game.Workspace.Baseplate--basic variable
+local myBigNumber = 500000--basic variable																												
+--but if we move "print(trueStatement)" here it will work because its with more variables and its like creating a whole new variable
+local function greatFunction()--basic function
+	local result = nil--nil is basically nothing it means "nothing"
+	
+	if result == nil then--this is a check to see if result is nothing
+		local result1 = true
+		print(result1)--if its true that the result is nil it will print the variable we made called result1
+	else
+		local result2 = false
+		print(result2)--if its false that the result is nil it will print the variable we made called result2
+		
+	end
+end
+
+greatFunction()--and this will call the function
+--and one more example:
+print(mySecondVariable)--this will not work beacause it will need to get it before printing it for example put the local variable above it to work
+local mySecondVariable = "string"--basic variable
