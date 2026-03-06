@@ -1,0 +1,20 @@
+--the logical operators:
+if true or false then
+	print("this statement is true")
+end
+--another example
+if 2 + 2 == 4 and 5 + 5 == 10 and 10 + 10 == 20 then
+	print("this statement is also true")
+end
+--another example
+if not true then--but if we change it to "not false" it will print the statement
+	print("It is not true!")
+end
+--the relational operators:
+if 2+2 == 4 then--a relational operator as used here as here is the equal sign(==)or the not equal sign(~=),the greater sign(> OR <).
+	print("The statement is true!")
+end
+--more relational operators:
+if 2+2 >= 4 then--we have the (>=)which means if it's greater or if its equal
+	print("Its greater to 4/equal to 4")
+end
