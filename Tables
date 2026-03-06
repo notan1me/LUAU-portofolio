@@ -1,0 +1,49 @@
+--Array tables:
+local myArray = {10, false, true, 50}--he {}indicates its going to be a table
+print(myArray[1])--it is going to print 10 because in the variable's table 10 is positioned at the first position--
+
+for index = 1, 4 do--this is to print out the whole variable we are basicaly always firstly putting one then the maximum number of datatypes or anything else are in there
+	print(myArray[index])--and this will print it
+end
+--table insert and table remove:
+local myArray = {10, 20, 30}
+
+table.insert(myArray, 40)--this inserts a value in the variable's table but in the end
+
+for i = 1, #myArray do--this makes the index
+	print(myArray[i])--and this prints it out
+end
+
+table.remove(myArray, 4)--this is going to remove the 40 because we added it with table.insert but behind it we have 10, 20 and 30 so it's at the fourth place
+
+for i = 1, #myArray do--this makes the index
+	print(myArray[i])--and this prints it out
+end
+--search array values:
+local myArray = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+
+if table.find(myArray, 50) then--this searches for the value 50 in the variable
+	print("50 has been found")--and if it's been found it will print this
+end
+--dictionaries
+local menu = {--if we do this we can add many names(strings)that also have a value
+	["Cheeseburger"] = 15,
+	["Cola"] = 4,
+	["Pancakes"] = 8,
+	["Milk"] = 4
+}
+
+menu["Cheeseburger"] = 5--this will modify the value of Cheeseburger
+
+print(menu["Cheeseburger"], menu["Cola"], menu["Milk"])--this will return the value of the strings
+--pairs:
+local menu = {
+	["Cheeseburger"] = 15,
+	["Cola"] = 4,
+	["Pancakes"] = 8,
+	["Milk"] = 4
+}
+
+for menuItem, price in pairs(menu) do--simple no need to explain
+	print(menuItem, price)--this will print all the names of the items inside the menu and next to them their prices
+end
