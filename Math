@@ -1,0 +1,20 @@
+local addition = 8362885623 + 32782 -- you can do minus too like 2 - 2 or multiply which is like 2 * 2 or divide like 2 / 2
+print(addition)--prints the result
+
+--math with a function:
+local function addittion(number1, number2)-- our values
+	local result = number1 + number2-- the math
+	print(result)-- the result
+end
+
+addittion(5, 2)-- our values(arguments) that we give to the function's number1 and number2 and they are devided by a coma like the function
+addittion(10, 20)--btw we can do it again and again with new numbers also
+
+--or we can do it with a return statement:
+local function addittion(number1, number2)-- our values
+	local result = number1 + number2-- the math
+	return result-- the change we made
+end
+
+local printResult = addition(5, 2)--and this is the second change we made its basicaly the same thing just another way
+print(printResult)
