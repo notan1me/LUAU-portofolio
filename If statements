@@ -1,0 +1,24 @@
+local function addition(number1, number2)
+	if number1 + number2 == 2 then
+		print("number1 and number2 are equal to 2")
+	else
+		print("number1 and number2 are not equal to 2")
+	end
+end
+
+addition(1,1)
+--simpler example:
+local changeTransparencyIfTrue = game.Workspace.Baseplate--basic variable
+local changeTransparencyIfFalse = game.Workspace.Baseplate--basic variable
+local changeTransparencyIfElse = game.Workspace.Baseplate--basic variable
+
+
+if 2 + 2 == 4 then--its really simple no need to explain
+	changeTransparencyIfTrue.Transparency = 1--and this check if the statement is true and if it is true it will print this
+
+elseif 2+2 == 5	 then--if the first one is false it will check this one and if it is true it will print this
+	changeTransparencyIfElse.Transparency = 0.5
+
+else
+	changeTransparencyIfFalse.Transparency = 0--if the statement is false it will print this
+end
