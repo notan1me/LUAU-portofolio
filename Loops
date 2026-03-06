@@ -1,0 +1,40 @@
+--the for loop:
+for myCounter = 1, 5, 1 do--we start at 1, our goal is 5 and each time it adds 1 so when it reaches 5 it will stop looping
+	print("Statenemt 1")
+	print("Statenemt 2")
+	print("Statenemt 3")
+end
+--another example for the for loop:
+for myCounter = 5, 1, -1 do--we start at 5, our goal is 1 and each time it will -1 so when we reach 5 it will stop looping
+	print("Statenemt 1")
+	print("Statenemt 2")
+	print("Statenemt 3")
+end
+--now the while loop:
+local myWhileCounter = 1--created a variable
+
+while myWhileCounter <= 5 do--basicaly it will do 1 + 1 until it reaches 5 because at the last line we said myWhileCounter + 1 if we did + 4 it would loop once
+	print("Statenemt 1")
+	print("Statenemt 2")
+	print("Statenemt 3")
+	myWhileCounter = myWhileCounter + 1--this is important without this my while loop will loop forever and my game will crash
+end
+--a nested loop(a loop inside a loop):
+for myCounter = 1, 5, 1 do--we start at 1, our goal is 5 and each time it adds 1 so when it reaches 5 it will stop looping
+	print("A")
+
+	for myCounter2 = 1, 5 , 1 do--our second loop that loops 25 times 5 times each time an A is printed
+		print("B")
+	end
+end
+--we can also do loop with anything for example change the color of our baseplate:
+local baseplate = game.Workspace.Baseplate
+
+for myCounter = 1, 100000000000000000 ,1 do
+	baseplate.BrickColor = BrickColor.new("Toothpaste")
+	task.wait(0.2)--this is a wait statement so we are able to see our baseplate changing colors because without this it would change too quickly for us to see
+	baseplate.BrickColor = BrickColor.new("Really red")
+	task.wait(0.2)
+	baseplate.BrickColor = BrickColor.new("Gold")
+	task.wait(0.2)
+end
