@@ -1,0 +1,98 @@
+--inventory system with stacking and weight limits
+
+local maxWeight = 100
+local currentWeight = 0
+
+local itemDatabase = {
+	["Potion"] = {weight = 2, stack = true},
+	["Sword"] = {weight = 10, stack = false},
+	["Apple"] = {weight = 1, stack = true},
+	["Shield"] = {weight = 15, stack = false}
+}
+
+local inventory = {}
+
+local function calculateWeight()
+	currentWeight = 0
+	
+	for itemName,data in pairs(inventory) do
+		local itemWeight = itemDatabase[itemName].weight
+		currentWeight += itemWeight * data.amount
+	end
+end
+
+local function addItem(itemName,amount)
+	amount = amount or 1
+	
+	local itemInfo = itemDatabase[itemName]
+	
+	if not itemInfo then
+		print("Item does not exist")
+		return
+	end
+	
+	local addedWeight = itemInfo.weight * amount
+	
+	if currentWeight + addedWeight > maxWeight then
+		print("Inventory too heavy")
+		return
+	end
+	
+	if inventory[itemName] then
+		if itemInfo.stack then
+			inventory[itemName].amount += amount
+		else
+			for i = 1,amount do
+				local uniqueName = itemName.."_"..tostring(os.clock())
+				inventory[uniqueName] = {
+					name = itemName,
+					amount = 1
+				}
+			end
+		end
+	else
+		inventory[itemName] = {
+			name = itemName,
+			amount = amount
+		}
+	end
+	
+	calculateWeight()
+end
+
+local function removeItem(itemName,amount)
+	amount = amount or 1
+	
+	if not inventory[itemName] then
+		print("Item not found")
+		return
+	end
+	
+	inventory[itemName].amount -= amount
+	
+	if inventory[itemName].amount <= 0 then
+		inventory[itemName] = nil
+	end
+	
+	calculateWeight()
+end
+
+local function printInventory()
+	print("----Inventory----")
+	
+	for name,data in pairs(inventory) do
+		print(name,"x"..data.amount)
+	end
+	
+	print("Weight:",currentWeight.."/"..maxWeight)
+end
+
+addItem("Potion",5)
+addItem("Sword",1)
+addItem("Apple",10)
+
+printInventory()
+
+removeItem("Potion",2)
+
+printInventory()
