@@ -1,0 +1,35 @@
+local inputService = game:GetService("UserInputService")
+local spawnPoint = game.Workspace.SpawnLocation
+local isJumping = false
+
+inputService.InputBegan:Connect(function(input, gameProcessedEvent)
+	if input.KeyCode == Enum.KeyCode.R then--this checks for when the button R is pressed and if it's pressed it will execute the lines of code below
+		print("player has pressed R")
+	end
+end)
+
+inputService.InputEnded:Connect(function(input, gameProcessedEvent)
+	if input.KeyCode == Enum.KeyCode.F1 then
+		local tweenService = game:GetService("TweenService")
+
+		local tweenInfo = TweenInfo.new(5)
+
+		local goal = {
+			Position = Vector3.new(-70.842, 100, 138.452)
+		}
+
+		local tween = tweenService:Create(spawnPoint, tweenInfo, goal)
+		tween:Play()
+	end
+end)
+
+inputService.JumpRequest:Connect(function()--this checks for when the player jumps
+	if not isJumping then
+		isJumping = true
+		print("Player has jumped!")
+		
+		task.wait(0.5)
+		isJumping = false
+	end
+end)
+
